@@ -1,6 +1,6 @@
 module.exports = {
     entry: __dirname + "/app/main.js", //入口文件
-    
+
     output: {
         path: __dirname + "/public", //打包文件文件存放位置
         filename: "bundle.js" //打包文件名
@@ -13,5 +13,22 @@ module.exports = {
         port: '3004',
         historyApiFallback: true, //不跳转
         inline: true //实时刷新
+    },
+
+    module: { //配置Loaders,使用es6语法和jsx
+        rules: [ 
+            {
+                test: /(\.jsx|\.js)$/,
+                use: {
+                    loader: 'babel-loader',  
+                    options: {
+                        presets: [
+                            'env','react'
+                        ]
+                    }
+                },
+                exclude: /node_modules/
+            }
+        ]
     }
 }
