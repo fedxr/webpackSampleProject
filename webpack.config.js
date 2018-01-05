@@ -20,7 +20,7 @@ module.exports = {
             {
                 test: /(\.jsx|\.js)$/,
                 use: {
-                    loader: 'babel-loader',  
+                    loader: 'babel-loader',
                     options: {
                         presets: [
                             'env','react'
