@@ -1,13 +1,14 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
     entry: __dirname + "/app/main.js", //入口文件
 
     output: {
         path: __dirname + "/build", //打包文件文件存放位置
-        filename: "bundle.js" //打包文件名
+        filename: "bundle-[hash].js" //打包文件名
     },
 
     devtool: 'eval-source-map', //生成干净的完整的source map，方便调试
@@ -55,6 +56,11 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),//热加载插件
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin("style.css")
+        new ExtractTextPlugin("style.css"),
+        new CleanWebpackPlugin('build/*.*', {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        })
     ]
 }
