@@ -8,7 +8,7 @@ module.exports = {
 
     output: {
         path: __dirname + "/build", //打包文件文件存放位置
-        filename: "bundle-[hash].js" //打包文件名
+        filename: "bundle-[hash].min.js" //打包文件名
     },
 
     devtool: 'eval-source-map', //生成干净的完整的source map，方便调试
