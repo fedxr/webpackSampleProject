@@ -6,9 +6,15 @@ const CleanWebpackPlugin = require("clean-webpack-plugin");
 module.exports = {
     entry: __dirname + "/app/main.js", //入口文件
 
+    // entry:{                                 //多个文件分别压缩
+    //     main: __dirname + "/app/main.js",
+    //     test: __dirname + "/app/test.js"
+    // },
+
     output: {
         path: __dirname + "/build", //打包文件文件存放位置
         filename: "bundle-[hash].min.js" //打包文件名
+        // filename: '[name]-[hash].min.js' //多文件压缩出口
     },
 
     devtool: 'eval-source-map', //生成干净的完整的source map，方便调试
